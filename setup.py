@@ -228,12 +228,12 @@ def main():
 
     subprocess.check_call(
         [
-            "sudo", "yum", "install", "-y", "epel-release"
+            "yum", "install", "-y", "epel-release"
         ]
     )
     subprocess.check_call(
         [
-            "sudo", "yum", "install", "-y",
+            "yum", "install", "-y",
             "gstreamer1-devel", "gstreamer1-plugins-base-tools",
             "gstreamer1-plugins-base-devel", "gstreamer1-plugins-good",
             "gstreamer1-plugins-bad-free", "gstreamer1-plugins-bad-free-devel"
