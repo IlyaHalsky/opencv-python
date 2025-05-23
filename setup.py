@@ -193,7 +193,6 @@ def main():
             "-DBUILD_DOCS=OFF",
             "-DPYTHON3_LIMITED_API=ON",
             "-DBUILD_OPENEXR=ON",
-            "-DWITH_GSTREAMER=ON",
         ]
         + (
             # CMake flags for windows/arm64 build
@@ -226,6 +225,20 @@ def main():
 
     if sys.platform.startswith("linux") and not is64 and "bdist_wheel" in sys.argv:
         subprocess.check_call("patch -p0 < patches/patchOpenEXR", shell=True)
+
+    subprocess.check_call(
+        [
+            "sudo", "yum", "install", "-y", "epel-release"
+        ]
+    )
+    subprocess.check_call(
+        [
+            "sudo", "yum", "install", "-y",
+            "gstreamer1-devel", "gstreamer1-plugins-base-tools",
+            "gstreamer1-plugins-base-devel", "gstreamer1-plugins-good",
+            "gstreamer1-plugins-bad-free", "gstreamer1-plugins-bad-free-devel"
+        ]
+    )
 
     # OS-specific components during CI builds
     if is_CI_build:
