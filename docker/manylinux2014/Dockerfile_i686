@@ -10,6 +10,12 @@ ARG YASM_VERSION=1.3.0
 
 RUN yum install bzip2-devel curl-devel zlib-devel xcb-util-renderutil-devel xcb-util-devel xcb-util-image-devel xcb-util-keysyms-devel xcb-util-wm-devel mesa-libGL-devel libxkbcommon-devel libxkbcommon-x11-devel libXi-devel freetype-devel -y
 
+RUN yum install -y epel-release
+RUN yum install -y git \
+      gstreamer1-devel gstreamer1-plugins-base-tools  \
+    gstreamer1-plugins-base-devel gstreamer1-plugins-good  \
+    gstreamer1-plugins-bad-free gstreamer1-plugins-bad-free-devel
+
 RUN curl -O -L https://download.qt.io/official_releases/qt/5.15/${QT_VERSION}/single/qt-everywhere-src-${QT_VERSION}.tar.xz && \
     tar -xf qt-everywhere-src-${QT_VERSION}.tar.xz && \
     cd qt-everywhere* && \
